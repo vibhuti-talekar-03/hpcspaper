@@ -214,7 +214,7 @@ chmod +x scripts/generate_test_data.py
 # Compile the code
 echo -e "\n${YELLOW}Compiling Fastrack-StringSearch...${NC}"
 if [ -f "final2.cu" ]; then
-    nvcc -O3 -std=c++14 -arch=sm_60 -o fastrack final2.cu 2>&1 | grep -i error || true
+    nvcc -O3 -std=c++14 -gencode=arch=compute_75,code=sm_75 -o fastrack final2.cu 2>&1 | grep -i error || true
     if [ -f "fastrack" ]; then
         echo -e "${GREEN}✓ Compilation successful${NC}"
     else
